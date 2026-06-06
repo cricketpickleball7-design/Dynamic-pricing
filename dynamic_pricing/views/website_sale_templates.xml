@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_price_dynamic_pricing_timer" inherit_id="website_sale.product_price" name="Dynamic Pricing Timer">
+        <xpath expr="//div[@name='product_price_container']" position="after">
+            <t t-set="dynamic_pricing" t-value="combination_info.get('dynamic_pricing')"/>
+            <div
+                t-if="dynamic_pricing and dynamic_pricing.get('enabled')"
+                class="o_dynamic_pricing_timer mt-2"
+                t-att-data-next-change-ms="dynamic_pricing['next_change_ms']"
+            >
+                <span class="o_dynamic_pricing_timer_period">
+                    <t t-out="dynamic_pricing['active_label']"/> price active
+                </span>
+                <span class="o_dynamic_pricing_timer_dot"/>
+                <span class="o_dynamic_pricing_timer_countdown">00:00:00</span>
+                <span>
+                    until <t t-out="dynamic_pricing['next_label']"/> price
+                </span>
+            </div>
+        </xpath>
+    </template>
+</odoo>
+

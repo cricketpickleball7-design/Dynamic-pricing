@@ -1,0 +1,34 @@
+.o_dynamic_pricing_timer {
+    align-items: center;
+    background: rgba(13, 110, 253, 0.08);
+    border-left: 3px solid #0d6efd;
+    border-radius: 4px;
+    color: #1f2937;
+    display: inline-flex;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+    gap: 0.4rem;
+    line-height: 1.4;
+    padding: 0.45rem 0.65rem;
+}
+
+.o_dynamic_pricing_timer_period,
+.o_dynamic_pricing_timer_countdown {
+    font-weight: 600;
+}
+
+.o_dynamic_pricing_timer_dot {
+    background: currentColor;
+    border-radius: 50%;
+    height: 0.25rem;
+    opacity: 0.45;
+    width: 0.25rem;
+}
+
+@media (max-width: 575.98px) {
+    .o_dynamic_pricing_timer {
+        display: flex;
+        width: 100%;
+    }
+}
+
