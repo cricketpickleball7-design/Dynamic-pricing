@@ -156,7 +156,7 @@ class AppointmentDynamicPricingConfig(models.Model):
     def _calculate_price(self, slot_datetime, payload=None):
         self.ensure_one()
         payload = payload or {}
-        slot_utc = self._parse_slot_datetime(slot_datetime)
+        slot_utc = self._parse_slot_datetime(slot_datetime, payload=payload)
         slot_local = self._to_pricing_timezone(slot_utc)
 
         time_score, applied_rule = self._get_time_score(slot_local)
@@ -229,14 +229,25 @@ class AppointmentDynamicPricingConfig(models.Model):
             "reason": " + ".join(reason_parts),
         }
 
-    def _parse_slot_datetime(self, slot_datetime):
+    def _parse_slot_datetime(self, slot_datetime, payload=None):
+        payload = payload or {}
         if isinstance(slot_datetime, datetime):
             parsed = slot_datetime
         else:
             parsed = fields.Datetime.from_string(slot_datetime)
         if parsed.tzinfo:
             return parsed.astimezone(pytz.UTC).replace(tzinfo=None)
-        return parsed
+
+        slot_timezone_name = (
+            payload.get("slot_timezone")
+            or payload.get("timezone")
+            or self.pricing_tz
+            or "UTC"
+        )
+        slot_timezone = pytz.timezone(slot_timezone_name)
+        return slot_timezone.localize(parsed, is_dst=False).astimezone(
+            pytz.UTC
+        ).replace(tzinfo=None)
 
     def _to_pricing_timezone(self, slot_utc):
         self.ensure_one()
@@ -301,4 +312,3 @@ class AppointmentDynamicPricingConfig(models.Model):
             event = self.env["calendar.event"].browse(calendar_event_id).exists()
             if event:
                 event._apply_appointment_dynamic_price_log(log)
-
