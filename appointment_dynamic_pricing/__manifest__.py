@@ -14,5 +14,5 @@
         "views/menu_views.xml",
     ],
     "installable": True,
-    "application": False,
+    "application": True,
 }
