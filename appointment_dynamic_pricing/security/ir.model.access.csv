@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_appointment_dynamic_pricing_config_admin,appointment.dynamic.pricing.config admin,model_appointment_dynamic_pricing_config,base.group_system,1,1,1,1
+access_appointment_dynamic_pricing_rule_admin,appointment.dynamic.pricing.rule admin,model_appointment_dynamic_pricing_rule,base.group_system,1,1,1,1
+access_appointment_pricing_signal_admin,appointment.pricing.signal admin,model_appointment_pricing_signal,base.group_system,1,1,1,1
+access_appointment_competitor_rate_admin,appointment.competitor.rate admin,model_appointment_competitor_rate,base.group_system,1,1,1,1
+access_appointment_dynamic_price_log_admin,appointment.dynamic.price.log admin,model_appointment_dynamic_price_log,base.group_system,1,1,1,1
+access_appointment_dynamic_pricing_config_user,appointment.dynamic.pricing.config user,model_appointment_dynamic_pricing_config,base.group_user,1,0,0,0
+access_appointment_dynamic_pricing_rule_user,appointment.dynamic.pricing.rule user,model_appointment_dynamic_pricing_rule,base.group_user,1,0,0,0
+access_appointment_pricing_signal_user,appointment.pricing.signal user,model_appointment_pricing_signal,base.group_user,1,0,0,0
+access_appointment_competitor_rate_user,appointment.competitor.rate user,model_appointment_competitor_rate,base.group_user,1,0,0,0
+access_appointment_dynamic_price_log_user,appointment.dynamic.price.log user,model_appointment_dynamic_price_log,base.group_user,1,0,0,0
+

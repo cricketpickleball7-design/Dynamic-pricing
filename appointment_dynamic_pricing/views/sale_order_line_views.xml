@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_order_line_view_form_appointment_dynamic_pricing" model="ir.ui.view">
+        <field name="name">sale.order.line.form.appointment.dynamic.pricing</field>
+        <field name="model">sale.order.line</field>
+        <field name="inherit_id" ref="sale.sale_order_line_view_form_readonly"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='price_unit']" position="after">
+                <field name="appointment_dynamic_price_locked" readonly="1"/>
+                <field name="appointment_dynamic_base_price" readonly="1"/>
+                <field name="appointment_dynamic_final_price" readonly="1"/>
+                <field name="appointment_dynamic_price_log_id" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

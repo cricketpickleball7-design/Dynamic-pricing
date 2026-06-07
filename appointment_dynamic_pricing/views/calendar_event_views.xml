@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="calendar_event_view_form_appointment_dynamic_pricing" model="ir.ui.view">
+        <field name="name">calendar.event.form.appointment.dynamic.pricing</field>
+        <field name="model">calendar.event</field>
+        <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <group string="Dynamic Pricing" invisible="not appointment_dynamic_price_locked">
+                    <field name="appointment_dynamic_price_locked" readonly="1"/>
+                    <field name="appointment_dynamic_base_price" readonly="1"/>
+                    <field name="appointment_dynamic_final_price" readonly="1"/>
+                    <field name="appointment_dynamic_currency_id" readonly="1"/>
+                    <field name="appointment_dynamic_price_log_id" readonly="1"/>
+                    <field name="appointment_dynamic_pricing_reason" readonly="1"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

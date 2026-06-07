@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem
+        id="appointment_dynamic_pricing_root_menu"
+        name="Appointment Dynamic Pricing"
+        sequence="80"
+        groups="base.group_user"
+    />
+    <menuitem
+        id="appointment_dynamic_pricing_config_menu"
+        name="Configurations"
+        parent="appointment_dynamic_pricing_root_menu"
+        action="appointment_dynamic_pricing_config_action"
+        sequence="10"
+    />
+    <menuitem
+        id="appointment_dynamic_pricing_rule_menu"
+        name="Time Rules"
+        parent="appointment_dynamic_pricing_root_menu"
+        action="appointment_dynamic_pricing_rule_action"
+        sequence="20"
+    />
+    <menuitem
+        id="appointment_pricing_signal_menu"
+        name="Signals"
+        parent="appointment_dynamic_pricing_root_menu"
+        action="appointment_pricing_signal_action"
+        sequence="30"
+    />
+    <menuitem
+        id="appointment_competitor_rate_menu"
+        name="Competitor Rates"
+        parent="appointment_dynamic_pricing_root_menu"
+        action="appointment_competitor_rate_action"
+        sequence="40"
+    />
+    <menuitem
+        id="appointment_dynamic_price_log_menu"
+        name="Price Logs"
+        parent="appointment_dynamic_pricing_root_menu"
+        action="appointment_dynamic_price_log_action"
+        sequence="50"
+    />
+</odoo>
+
