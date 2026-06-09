@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cricket_booking_type_list" model="ir.ui.view">
+        <field name="name">cricket.booking.type.list</field>
+        <field name="model">cricket.booking.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="product_id"/>
+                <field name="default_duration_minutes"/>
+                <field name="play_minutes"/>
+                <field name="cleaning_minutes"/>
+                <field name="allow_instant_payment"/>
+                <field name="website_published"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cricket_booking_type_form" model="ir.ui.view">
+        <field name="name">cricket.booking.type.form</field>
+        <field name="model">cricket.booking.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image_1920" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sequence"/>
+                            <field name="code"/>
+                            <field name="product_id"/>
+                        </group>
+                        <group>
+                            <field name="default_duration_minutes"/>
+                            <field name="play_minutes"/>
+                            <field name="cleaning_minutes"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="allow_instant_payment"/>
+                        <field name="create_crm_lead"/>
+                        <field name="website_published"/>
+                        <field name="active"/>
+                    </group>
+                    <field name="description"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

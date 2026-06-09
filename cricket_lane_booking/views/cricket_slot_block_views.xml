@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cricket_slot_block_list" model="ir.ui.view">
+        <field name="name">cricket.slot.block.list</field>
+        <field name="model">cricket.slot.block</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="active"/>
+                <field name="location_id"/>
+                <field name="lane_ids" widget="many2many_tags"/>
+                <field name="reason"/>
+                <field name="slot_start"/>
+                <field name="slot_end"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cricket_slot_block_form" model="ir.ui.view">
+        <field name="name">cricket.slot.block.form</field>
+        <field name="model">cricket.slot.block</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="active"/>
+                            <field name="location_id"/>
+                            <field name="lane_ids" widget="many2many_tags"/>
+                            <field name="reason"/>
+                        </group>
+                        <group>
+                            <field name="slot_start"/>
+                            <field name="slot_end"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <field name="note"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_cricket_slot_block_calendar" model="ir.ui.view">
+        <field name="name">cricket.slot.block.calendar</field>
+        <field name="model">cricket.slot.block</field>
+        <field name="arch" type="xml">
+            <calendar string="Resource Blocks" date_start="slot_start" date_stop="slot_end" color="reason">
+                <field name="name"/>
+                <field name="lane_ids"/>
+                <field name="reason"/>
+            </calendar>
+        </field>
+    </record>
+</odoo>

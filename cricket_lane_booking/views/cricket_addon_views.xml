@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cricket_addon_list" model="ir.ui.view">
+        <field name="name">cricket.addon.list</field>
+        <field name="model">cricket.addon</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="price"/>
+                <field name="state"/>
+                <field name="website_published"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cricket_addon_form" model="ir.ui.view">
+        <field name="name">cricket.addon.form</field>
+        <field name="model">cricket.addon</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="product_id"/>
+                            <field name="price"/>
+                            <field name="currency_id"/>
+                        </group>
+                        <group>
+                            <field name="state"/>
+                            <field name="max_quantity"/>
+                            <field name="website_published"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="booking_type_ids" widget="many2many_tags"/>
+                        <field name="lane_ids" widget="many2many_tags"/>
+                    </group>
+                    <field name="description"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

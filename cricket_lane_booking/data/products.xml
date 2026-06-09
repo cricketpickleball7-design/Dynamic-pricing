@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="product_cricket_lane_booking" model="product.product">
+        <field name="name">Cricket Lane Booking</field>
+        <field name="type">service</field>
+        <field name="list_price">0.0</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+    </record>
+
+    <record id="product_box_cricket_booking" model="product.product">
+        <field name="name">Box Cricket Booking</field>
+        <field name="type">service</field>
+        <field name="list_price">0.0</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+    </record>
+
+    <record id="product_bola_bowling_machine" model="product.product">
+        <field name="name">Bola Bowling Machine</field>
+        <field name="type">service</field>
+        <field name="list_price">5.0</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+    </record>
+
+    <record id="product_bat_sensors" model="product.product">
+        <field name="name">Bat Sensors</field>
+        <field name="type">service</field>
+        <field name="list_price">20.0</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+    </record>
+
+    <record id="product_speed_guns" model="product.product">
+        <field name="name">Speed Guns</field>
+        <field name="type">service</field>
+        <field name="list_price">35.0</field>
+        <field name="sale_ok">True</field>
+        <field name="purchase_ok">False</field>
+    </record>
+</odoo>

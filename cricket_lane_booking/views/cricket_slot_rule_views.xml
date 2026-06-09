@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cricket_slot_rule_list" model="ir.ui.view">
+        <field name="name">cricket.slot.rule.list</field>
+        <field name="model">cricket.slot.rule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="location_id"/>
+                <field name="booking_type_id"/>
+                <field name="dayofweek"/>
+                <field name="open_time_float" widget="float_time"/>
+                <field name="close_time_float" widget="float_time"/>
+                <field name="slot_step_minutes"/>
+                <field name="play_minutes"/>
+                <field name="cleaning_minutes"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cricket_slot_rule_form" model="ir.ui.view">
+        <field name="name">cricket.slot.rule.form</field>
+        <field name="model">cricket.slot.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="location_id"/>
+                            <field name="booking_type_id"/>
+                            <field name="dayofweek"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="open_time_float" widget="float_time"/>
+                            <field name="close_time_float" widget="float_time"/>
+                            <field name="slot_step_minutes"/>
+                            <field name="play_minutes"/>
+                            <field name="cleaning_minutes"/>
+                        </group>
+                    </group>
+                    <group string="Date Range">
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

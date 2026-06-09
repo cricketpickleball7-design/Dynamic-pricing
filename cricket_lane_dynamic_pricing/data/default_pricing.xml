@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="price_rule_morning_premium" model="cricket.price.rule">
+        <field name="name">Morning Premium</field>
+        <field name="sequence">10</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="apply_on">time_day</field>
+        <field name="rule_type">multiplier</field>
+        <field name="value">1.15</field>
+        <field name="time_from_float">6.0</field>
+        <field name="time_to_float">10.0</field>
+    </record>
+
+    <record id="price_rule_midday_value" model="cricket.price.rule">
+        <field name="name">Midday Value</field>
+        <field name="sequence">20</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="apply_on">time_day</field>
+        <field name="rule_type">multiplier</field>
+        <field name="value">0.90</field>
+        <field name="time_from_float">11.0</field>
+        <field name="time_to_float">16.0</field>
+    </record>
+
+    <record id="price_rule_evening_premium" model="cricket.price.rule">
+        <field name="name">Evening Premium</field>
+        <field name="sequence">30</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="apply_on">time_day</field>
+        <field name="rule_type">multiplier</field>
+        <field name="value">1.25</field>
+        <field name="time_from_float">17.0</field>
+        <field name="time_to_float">23.0</field>
+    </record>
+
+    <record id="price_rule_saturday_premium" model="cricket.price.rule">
+        <field name="name">Saturday Premium</field>
+        <field name="sequence">40</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="apply_on">time_day</field>
+        <field name="rule_type">multiplier</field>
+        <field name="value">1.15</field>
+        <field name="dayofweek">5</field>
+    </record>
+
+    <record id="price_rule_sunday_premium" model="cricket.price.rule">
+        <field name="name">Sunday Premium</field>
+        <field name="sequence">50</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="apply_on">time_day</field>
+        <field name="rule_type">multiplier</field>
+        <field name="value">1.15</field>
+        <field name="dayofweek">6</field>
+    </record>
+</odoo>

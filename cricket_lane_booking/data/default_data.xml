@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="cricket_location_main" model="cricket.location">
+        <field name="name">Strikers Cricket - Milpitas</field>
+        <field name="timezone">US/Pacific</field>
+        <field name="default_open_time">9.0</field>
+        <field name="default_close_time">21.0</field>
+        <field name="minimum_notice_minutes">60</field>
+        <field name="max_booking_days_ahead">30</field>
+        <field name="hold_minutes">10</field>
+    </record>
+
+    <record id="booking_type_lane" model="cricket.booking.type">
+        <field name="name">Book a Lane</field>
+        <field name="sequence">10</field>
+        <field name="code">lane</field>
+        <field name="product_id" ref="cricket_lane_booking.product_cricket_lane_booking"/>
+        <field name="default_duration_minutes">60</field>
+        <field name="play_minutes">55</field>
+        <field name="cleaning_minutes">5</field>
+        <field name="allow_instant_payment">True</field>
+    </record>
+
+    <record id="booking_type_box_cricket" model="cricket.booking.type">
+        <field name="name">Box Cricket</field>
+        <field name="sequence">20</field>
+        <field name="code">box_cricket</field>
+        <field name="product_id" ref="cricket_lane_booking.product_box_cricket_booking"/>
+        <field name="default_duration_minutes">60</field>
+        <field name="play_minutes">55</field>
+        <field name="cleaning_minutes">5</field>
+        <field name="allow_instant_payment">True</field>
+    </record>
+
+    <record id="booking_type_event" model="cricket.booking.type">
+        <field name="name">Box Cricket for Events</field>
+        <field name="sequence">30</field>
+        <field name="code">event</field>
+        <field name="default_duration_minutes">60</field>
+        <field name="play_minutes">55</field>
+        <field name="cleaning_minutes">5</field>
+        <field name="allow_instant_payment">False</field>
+        <field name="create_crm_lead">True</field>
+    </record>
+
+    <record id="lane_1" model="cricket.lane">
+        <field name="name">Lane 1</field>
+        <field name="code">L1</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="sequence">10</field>
+        <field name="length_ft">140</field>
+        <field name="max_people">8</field>
+        <field name="included_people">2</field>
+        <field name="extra_person_fee">3.0</field>
+        <field name="base_price">25.0</field>
+    </record>
+
+    <record id="lane_2" model="cricket.lane">
+        <field name="name">Lane 2</field>
+        <field name="code">L2</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="sequence">20</field>
+        <field name="length_ft">140</field>
+        <field name="max_people">8</field>
+        <field name="included_people">2</field>
+        <field name="extra_person_fee">3.0</field>
+        <field name="base_price">25.0</field>
+    </record>
+
+    <record id="lane_3" model="cricket.lane">
+        <field name="name">Lane 3</field>
+        <field name="code">L3</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="sequence">30</field>
+        <field name="length_ft">100</field>
+        <field name="max_people">8</field>
+        <field name="included_people">2</field>
+        <field name="extra_person_fee">3.0</field>
+        <field name="base_price">20.0</field>
+    </record>
+
+    <record id="lane_4" model="cricket.lane">
+        <field name="name">Lane 4</field>
+        <field name="code">L4</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="sequence">40</field>
+        <field name="length_ft">80</field>
+        <field name="max_people">8</field>
+        <field name="included_people">2</field>
+        <field name="extra_person_fee">3.0</field>
+        <field name="base_price">18.0</field>
+    </record>
+
+    <record id="lane_5" model="cricket.lane">
+        <field name="name">Lane 5</field>
+        <field name="code">L5</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="sequence">50</field>
+        <field name="length_ft">80</field>
+        <field name="max_people">8</field>
+        <field name="included_people">2</field>
+        <field name="extra_person_fee">3.0</field>
+        <field name="base_price">18.0</field>
+    </record>
+
+    <record id="lane_6" model="cricket.lane">
+        <field name="name">Lane 6</field>
+        <field name="code">L6</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="sequence">60</field>
+        <field name="length_ft">80</field>
+        <field name="max_people">8</field>
+        <field name="included_people">2</field>
+        <field name="extra_person_fee">3.0</field>
+        <field name="base_price">18.0</field>
+    </record>
+
+    <record id="lane_box_cricket" model="cricket.lane">
+        <field name="name">Box Cricket</field>
+        <field name="code">BOX</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="sequence">70</field>
+        <field name="length_ft">240</field>
+        <field name="lane_type">box_bundle</field>
+        <field name="lane_ids" eval="[(6, 0, [ref('cricket_lane_booking.lane_4'), ref('cricket_lane_booking.lane_5'), ref('cricket_lane_booking.lane_6')])]"/>
+        <field name="max_people">12</field>
+        <field name="included_people">6</field>
+        <field name="extra_person_fee">3.0</field>
+        <field name="base_price">54.0</field>
+    </record>
+
+    <record id="slot_rule_weekday_lane" model="cricket.slot.rule">
+        <field name="name">Weekday Lane Hours</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="booking_type_id" ref="cricket_lane_booking.booking_type_lane"/>
+        <field name="dayofweek">0</field>
+        <field name="open_time_float">12.0</field>
+        <field name="close_time_float">23.0</field>
+    </record>
+
+    <record id="slot_rule_weekend_lane" model="cricket.slot.rule">
+        <field name="name">Weekend Lane Hours</field>
+        <field name="location_id" ref="cricket_lane_booking.cricket_location_main"/>
+        <field name="booking_type_id" ref="cricket_lane_booking.booking_type_lane"/>
+        <field name="dayofweek">5</field>
+        <field name="open_time_float">9.0</field>
+        <field name="close_time_float">21.0</field>
+    </record>
+
+    <function model="cricket.slot.rule" name="create" eval="[[
+        {'name': 'Tuesday Lane Hours', 'location_id': ref('cricket_lane_booking.cricket_location_main'), 'booking_type_id': ref('cricket_lane_booking.booking_type_lane'), 'dayofweek': '1', 'open_time_float': 12.0, 'close_time_float': 23.0},
+        {'name': 'Wednesday Lane Hours', 'location_id': ref('cricket_lane_booking.cricket_location_main'), 'booking_type_id': ref('cricket_lane_booking.booking_type_lane'), 'dayofweek': '2', 'open_time_float': 12.0, 'close_time_float': 23.0},
+        {'name': 'Thursday Lane Hours', 'location_id': ref('cricket_lane_booking.cricket_location_main'), 'booking_type_id': ref('cricket_lane_booking.booking_type_lane'), 'dayofweek': '3', 'open_time_float': 12.0, 'close_time_float': 23.0},
+        {'name': 'Friday Lane Hours', 'location_id': ref('cricket_lane_booking.cricket_location_main'), 'booking_type_id': ref('cricket_lane_booking.booking_type_lane'), 'dayofweek': '4', 'open_time_float': 12.0, 'close_time_float': 23.0},
+        {'name': 'Sunday Lane Hours', 'location_id': ref('cricket_lane_booking.cricket_location_main'), 'booking_type_id': ref('cricket_lane_booking.booking_type_lane'), 'dayofweek': '6', 'open_time_float': 9.0, 'close_time_float': 21.0}
+    ]]"/>
+
+    <record id="addon_bola_machine" model="cricket.addon">
+        <field name="name">Bola Bowling Machine</field>
+        <field name="product_id" ref="cricket_lane_booking.product_bola_bowling_machine"/>
+        <field name="price">5.0</field>
+        <field name="booking_type_ids" eval="[(6, 0, [ref('cricket_lane_booking.booking_type_lane'), ref('cricket_lane_booking.booking_type_box_cricket')])]"/>
+    </record>
+
+    <record id="addon_bat_sensors" model="cricket.addon">
+        <field name="name">Bat Sensors</field>
+        <field name="product_id" ref="cricket_lane_booking.product_bat_sensors"/>
+        <field name="price">20.0</field>
+        <field name="booking_type_ids" eval="[(6, 0, [ref('cricket_lane_booking.booking_type_lane'), ref('cricket_lane_booking.booking_type_box_cricket')])]"/>
+    </record>
+
+    <record id="addon_speed_guns" model="cricket.addon">
+        <field name="name">Speed Guns</field>
+        <field name="product_id" ref="cricket_lane_booking.product_speed_guns"/>
+        <field name="price">35.0</field>
+        <field name="state">coming_soon</field>
+        <field name="booking_type_ids" eval="[(6, 0, [ref('cricket_lane_booking.booking_type_lane'), ref('cricket_lane_booking.booking_type_box_cricket')])]"/>
+    </record>
+</odoo>

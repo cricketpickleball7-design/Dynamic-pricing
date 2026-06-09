@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form_cricket_booking" model="ir.ui.view">
+        <field name="name">sale.order.form.cricket.booking</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Cricket Booking" invisible="not cricket_hold_id and not cricket_booking_id">
+                    <group>
+                        <field name="cricket_hold_id"/>
+                        <field name="cricket_booking_id"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

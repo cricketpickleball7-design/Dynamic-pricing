@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cricket_price_rule_list" model="ir.ui.view">
+        <field name="name">cricket.price.rule.list</field>
+        <field name="model">cricket.price.rule</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="active"/>
+                <field name="apply_on"/>
+                <field name="rule_type"/>
+                <field name="value"/>
+                <field name="location_id"/>
+                <field name="booking_type_id"/>
+                <field name="lane_id"/>
+                <field name="dayofweek"/>
+                <field name="time_from_float" widget="float_time"/>
+                <field name="time_to_float" widget="float_time"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cricket_price_rule_form" model="ir.ui.view">
+        <field name="name">cricket.price.rule.form</field>
+        <field name="model">cricket.price.rule</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="active"/>
+                            <field name="apply_on"/>
+                            <field name="rule_type"/>
+                            <field name="value"/>
+                            <field name="stop_further_rules"/>
+                        </group>
+                        <group>
+                            <field name="location_id"/>
+                            <field name="booking_type_id"/>
+                            <field name="lane_id"/>
+                            <field name="lane_length_ft"/>
+                            <field name="dayofweek"/>
+                        </group>
+                    </group>
+                    <group string="Date and Time">
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="time_from_float" widget="float_time"/>
+                        <field name="time_to_float" widget="float_time"/>
+                    </group>
+                    <group string="Thresholds">
+                        <field name="min_people"/>
+                        <field name="max_people"/>
+                        <field name="occupancy_min"/>
+                        <field name="occupancy_max"/>
+                        <field name="traffic_min"/>
+                        <field name="traffic_max"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

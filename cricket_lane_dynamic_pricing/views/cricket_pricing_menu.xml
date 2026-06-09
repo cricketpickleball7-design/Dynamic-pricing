@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_cricket_dynamic_pricing" name="Dynamic Pricing" parent="cricket_lane_booking.menu_cricket_booking_root" sequence="70"/>
+
+    <record id="action_cricket_price_rule" model="ir.actions.act_window">
+        <field name="name">Price Rules</field>
+        <field name="res_model">cricket.price.rule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_cricket_price_rules" name="Price Rules" parent="menu_cricket_dynamic_pricing" action="action_cricket_price_rule" sequence="10"/>
+
+    <record id="action_cricket_competitor_rate" model="ir.actions.act_window">
+        <field name="name">Competitor Rates</field>
+        <field name="res_model">cricket.competitor.rate</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_cricket_competitor_rates" name="Competitor Rates" parent="menu_cricket_dynamic_pricing" action="action_cricket_competitor_rate" sequence="20"/>
+
+    <record id="action_cricket_traffic_metric" model="ir.actions.act_window">
+        <field name="name">Traffic Metrics</field>
+        <field name="res_model">cricket.traffic.metric</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_cricket_traffic_metrics" name="Traffic Metrics" parent="menu_cricket_dynamic_pricing" action="action_cricket_traffic_metric" sequence="30"/>
+</odoo>

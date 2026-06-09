@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cricket_booking_hold_list" model="ir.ui.view">
+        <field name="name">cricket.booking.hold.list</field>
+        <field name="model">cricket.booking.hold</field>
+        <field name="arch" type="xml">
+            <list create="0">
+                <field name="name"/>
+                <field name="state"/>
+                <field name="location_id"/>
+                <field name="booking_type_id"/>
+                <field name="lane_ids" widget="many2many_tags"/>
+                <field name="slot_start"/>
+                <field name="slot_end"/>
+                <field name="slot_count"/>
+                <field name="people_count"/>
+                <field name="price_total"/>
+                <field name="expires_at"/>
+                <field name="sale_order_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cricket_booking_hold_form" model="ir.ui.view">
+        <field name="name">cricket.booking.hold.form</field>
+        <field name="model">cricket.booking.hold</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <header>
+                    <button name="action_expire" type="object" string="Expire" class="btn-secondary" invisible="state != 'active'"/>
+                    <button name="action_cancel" type="object" string="Cancel" class="btn-secondary" invisible="state != 'active'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="partner_id"/>
+                            <field name="customer_first_name"/>
+                            <field name="customer_last_name"/>
+                            <field name="customer_phone"/>
+                            <field name="customer_email"/>
+                        </group>
+                        <group>
+                            <field name="location_id"/>
+                            <field name="booking_type_id"/>
+                            <field name="lane_ids" widget="many2many_tags"/>
+                            <field name="people_count"/>
+                            <field name="addon_ids" widget="many2many_tags"/>
+                        </group>
+                    </group>
+                    <group string="Slot">
+                        <field name="slot_start"/>
+                        <field name="play_end"/>
+                        <field name="slot_end"/>
+                        <field name="slot_count"/>
+                        <field name="expires_at"/>
+                    </group>
+                    <group string="Commerce">
+                        <field name="price_total"/>
+                        <field name="currency_id"/>
+                        <field name="sale_order_id"/>
+                        <field name="booking_id"/>
+                    </group>
+                    <field name="price_breakdown_json"/>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+</odoo>

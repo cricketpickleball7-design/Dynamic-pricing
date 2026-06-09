@@ -1,0 +1,953 @@
+.o_cricket_booking_page {
+    background: #f7f2ee;
+    color: #151218;
+}
+
+.o_cricket_booking_shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 48px 18px 64px;
+}
+
+.o_cricket_booking_experience {
+    display: grid;
+    gap: 38px;
+}
+
+.o_booking_intro {
+    max-width: 760px;
+    margin: 0 auto 8px;
+    text-align: center;
+}
+
+.o_booking_intro h1 {
+    margin: 0;
+    color: #20112f;
+    font-size: clamp(48px, 7vw, 86px);
+    font-weight: 500;
+    line-height: .98;
+    letter-spacing: 0;
+}
+
+.o_booking_intro p {
+    max-width: 690px;
+    margin: 20px auto 0;
+    color: #382f3d;
+    font-size: 20px;
+    line-height: 1.45;
+}
+
+.o_booking_hero {
+    display: grid;
+    grid-template-columns: minmax(340px, 490px) minmax(380px, 1fr);
+    align-items: stretch;
+    max-width: 1010px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 46px rgba(61, 33, 92, .16);
+}
+
+.o_hero_collage {
+    position: relative;
+    min-height: 420px;
+    background: #241131;
+    overflow: hidden;
+}
+
+.o_collage_tile {
+    position: absolute;
+    inset: 0;
+    background-color: #5f2f84;
+    background-blend-mode: screen;
+}
+
+.o_tile_one {
+    right: 42%;
+    bottom: 53%;
+    background-image:
+        linear-gradient(90deg, rgba(255,255,255,.16) 0 2px, transparent 2px 48px),
+        linear-gradient(0deg, rgba(255,255,255,.22) 0 2px, transparent 2px 48px),
+        linear-gradient(135deg, #5b2f84, #2a173b 44%, #9dd441);
+    clip-path: polygon(0 0, 100% 0, 74% 100%, 0 100%);
+}
+
+.o_tile_two {
+    left: 58%;
+    bottom: 40%;
+    background-image:
+        radial-gradient(circle at 54% 44%, rgba(255,214,0,.72) 0 4px, transparent 5px),
+        linear-gradient(145deg, #251132, #6c3d95 50%, #e6d8ef);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 24% 100%);
+}
+
+.o_tile_three {
+    top: 43%;
+    right: 37%;
+    background-image:
+        linear-gradient(90deg, transparent 0 42%, rgba(255,255,255,.6) 42% 43%, transparent 43%),
+        linear-gradient(180deg, #1c1424, #5f2a87 48%, #a7d341 49%, #a7d341 100%);
+    clip-path: polygon(0 0, 100% 0, 74% 100%, 0 100%);
+}
+
+.o_tile_four {
+    top: 60%;
+    left: 57%;
+    background-image:
+        radial-gradient(circle at 52% 36%, rgba(255,214,0,.85) 0 5px, transparent 6px),
+        linear-gradient(145deg, #9fd23e, #f4f0e9 42%, #4b1d73 43%, #241131);
+    clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.o_collage_flash {
+    position: absolute;
+    left: 46%;
+    top: 18%;
+    width: 92px;
+    height: 210px;
+    border-radius: 46px;
+    background: rgba(255, 255, 255, .88);
+    box-shadow: 0 0 36px rgba(255, 214, 0, .7);
+    transform: rotate(8deg);
+}
+
+.o_collage_flash::before,
+.o_collage_flash::after {
+    content: "";
+    position: absolute;
+    background: #6d35a8;
+    border-radius: 999px;
+}
+
+.o_collage_flash::before {
+    left: 38px;
+    top: 28px;
+    width: 20px;
+    height: 20px;
+}
+
+.o_collage_flash::after {
+    left: 42px;
+    top: 56px;
+    width: 10px;
+    height: 106px;
+    box-shadow:
+        -22px 42px 0 -2px #6d35a8,
+        22px 42px 0 -2px #6d35a8,
+        -26px 84px 0 -1px #6d35a8,
+        26px 84px 0 -1px #6d35a8;
+}
+
+.o_booking_type_stack {
+    display: grid;
+    background: #ffffff;
+}
+
+.o_booking_type {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+    min-height: 132px;
+    border: 0;
+    border-bottom: 1px solid #ece5ef;
+    background: #ffffff;
+    color: #151218;
+    padding: 28px 34px;
+    text-align: left;
+    cursor: pointer;
+    transition: background .18s ease, color .18s ease, box-shadow .18s ease;
+}
+
+.o_booking_type:last-child {
+    border-bottom: 0;
+}
+
+.o_booking_type:hover,
+.o_booking_type.is-selected {
+    background: #f1e8f8;
+    color: #30104c;
+    box-shadow: inset 6px 0 0 #6d35a8;
+}
+
+.o_radio_dot {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #9f96a7;
+    border-radius: 999px;
+    background: #ffffff;
+}
+
+.o_booking_type.is-selected .o_radio_dot {
+    border: 3px solid #2d173f;
+    background: #ffd600;
+    box-shadow: inset 0 0 0 3px #ffd600;
+}
+
+.o_type_copy {
+    display: grid;
+    gap: 12px;
+}
+
+.o_type_copy strong {
+    color: inherit;
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: 0;
+}
+
+.o_type_copy em {
+    color: #2f2636;
+    font-size: 21px;
+    font-style: normal;
+    line-height: 1.38;
+}
+
+.o_cricket_booking_main {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    gap: 38px;
+}
+
+.o_form_step,
+.o_field_group {
+    display: grid;
+    gap: 12px;
+    color: #140f19;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.o_form_step_full {
+    width: 100%;
+}
+
+.o_location_select,
+.o_customer_input,
+.o_event_input,
+.o_event_notes {
+    width: 100%;
+    min-height: 62px;
+    border: 1.5px solid #1b1226;
+    border-radius: 18px;
+    background: #ffffff;
+    color: #151218;
+    padding: 14px 20px;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.o_location_select {
+    appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, #1b1226 50%),
+        linear-gradient(135deg, #1b1226 50%, transparent 50%);
+    background-position:
+        calc(100% - 30px) 26px,
+        calc(100% - 18px) 26px;
+    background-size: 12px 12px, 12px 12px;
+    background-repeat: no-repeat;
+}
+
+.o_lane_map_panel {
+    overflow-x: auto;
+    background: #e9f0d5;
+    border-radius: 8px;
+    padding: 24px 28px 0;
+}
+
+.o_cricket_lane_map {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(92px, 1fr));
+    gap: 30px;
+    min-width: 820px;
+    align-items: end;
+}
+
+.o_cricket_lane_strip {
+    position: relative;
+    display: block;
+    height: clamp(420px, 54vw, 650px);
+    border: 0;
+    border-radius: 8px 8px 0 0;
+    background: linear-gradient(to bottom, transparent 0 90px, #a5d242 90px 100%);
+    color: #151218;
+    cursor: pointer;
+    padding: 0;
+    overflow: hidden;
+}
+
+.o_cricket_lane_strip::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 90px;
+    bottom: 0;
+    border-left: 2px solid rgba(255,255,255,.95);
+    border-right: 2px solid rgba(255,255,255,.95);
+}
+
+.o_lane_heading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    gap: 4px;
+    text-align: center;
+    color: #151218;
+}
+
+.o_lane_heading strong,
+.o_lane_heading em {
+    display: block;
+    font-style: normal;
+    line-height: 1.12;
+}
+
+.o_lane_heading strong {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.o_lane_heading em {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.o_lane_pitch {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 48px;
+    border: 3px solid #ffffff;
+}
+
+.o_lane_pitch::before,
+.o_lane_pitch::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    background: #ffffff;
+    box-shadow: 10px 0 0 #ffffff, 20px 0 0 #ffffff;
+}
+
+.o_lane_pitch::before {
+    left: 28%;
+}
+
+.o_lane_pitch::after {
+    right: 28%;
+}
+
+.o_lane_pitch_top {
+    top: 90px;
+}
+
+.o_lane_pitch_bottom {
+    bottom: 0;
+}
+
+.o_lane_marker {
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    width: 38px;
+    height: 38px;
+    border: 1.5px solid #1b1226;
+    border-radius: 4px;
+    background: #ffffff;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 1px 0 rgba(0,0,0,.16);
+}
+
+.o_cricket_lane_strip.is-selected {
+    background: linear-gradient(to bottom, transparent 0 90px, #4b1d73 90px 100%);
+}
+
+.o_cricket_lane_strip.is-selected .o_lane_marker,
+.o_square_check {
+    border-color: #1b1226;
+    background: #ffd600;
+}
+
+.o_cricket_lane_strip.is-selected .o_lane_marker::after,
+.o_square_check::after {
+    content: "\2713";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: #1b1226;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.o_cricket_lane_strip.is-unavailable,
+.o_cricket_lane_strip.is-ghosted {
+    opacity: .42;
+    cursor: not-allowed;
+    filter: grayscale(.25);
+}
+
+.o_cricket_lane_strip:disabled {
+    cursor: not-allowed;
+}
+
+.o_lane_bundle_summary {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 16px;
+    align-items: center;
+    width: 94%;
+    max-width: 940px;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 0 0 8px 8px;
+    background: #ffffff;
+    color: #151218;
+    padding: 18px 28px;
+    text-align: left;
+}
+
+button.o_lane_bundle_summary {
+    cursor: pointer;
+}
+
+.o_square_check {
+    position: relative;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid #1b1226;
+    border-radius: 4px;
+}
+
+.o_lane_bundle_summary strong {
+    overflow-wrap: anywhere;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.o_lane_bundle_summary span:last-child {
+    color: #867b8c;
+    font-size: 19px;
+}
+
+.o_booking_columns {
+    display: grid;
+    grid-template-columns: minmax(320px, 1.25fr) minmax(250px, .85fr) minmax(250px, .75fr);
+    gap: 20px;
+    align-items: start;
+}
+
+.o_calendar_card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.o_calendar_input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 58px;
+    border-bottom: 1px solid #dad1df;
+    padding: 12px 18px;
+    color: #151218;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.o_calendar_input input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.o_calendar_icon {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    border: 2px solid #1b1226;
+    border-radius: 4px;
+}
+
+.o_calendar_icon::before,
+.o_calendar_icon::after {
+    content: "";
+    position: absolute;
+    background: #1b1226;
+}
+
+.o_calendar_icon::before {
+    left: 0;
+    right: 0;
+    top: 7px;
+    height: 2px;
+}
+
+.o_calendar_icon::after {
+    left: 6px;
+    top: -5px;
+    width: 3px;
+    height: 8px;
+    box-shadow: 11px 0 0 #1b1226;
+}
+
+.o_calendar_month {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 14px 10px;
+    color: #20112f;
+    font-size: 28px;
+    line-height: 1.1;
+}
+
+.o_calendar_month strong {
+    font-weight: 800;
+}
+
+.o_calendar_month span {
+    color: #6d6172;
+    font-weight: 500;
+}
+
+.o_calendar_weekdays,
+.o_cricket_dates {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(34px, 1fr));
+    gap: 8px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.o_calendar_weekdays {
+    color: #151218;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.o_cricket_dates {
+    padding-top: 14px;
+}
+
+.o_calendar_day,
+.o_cricket_date {
+    display: grid;
+    place-items: center;
+    width: 100%;
+    aspect-ratio: 1;
+    min-height: 40px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: #514956;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.o_cricket_date:hover {
+    background: #f1e8f8;
+    color: #4b1d73;
+}
+
+.o_cricket_date.is-selected {
+    background: #4b1d73;
+    color: #ffffff;
+}
+
+.o_calendar_day.is-muted,
+.o_cricket_date.is-unavailable {
+    color: #c9c2cc;
+}
+
+.o_cricket_date.is-unavailable {
+    cursor: not-allowed;
+}
+
+.o_calendar_legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    padding: 16px 18px 20px;
+    color: #2f2636;
+    font-size: 17px;
+}
+
+.o_calendar_legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.o_calendar_legend i {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #1b1226;
+    background: #ffffff;
+    border-radius: 3px;
+}
+
+.o_calendar_legend i.is-selected {
+    background: #4b1d73;
+}
+
+.o_calendar_legend i.is-unavailable {
+    background: #a8a2ad;
+}
+
+.o_lane_context {
+    color: #2f2636;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.o_time_dropdown {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    min-height: 92px;
+    border: 1.5px solid #1b1226;
+    border-radius: 18px;
+    background: #ffffff;
+    padding: 14px 18px;
+}
+
+.o_time_value {
+    color: #151218;
+    font-size: 20px;
+    line-height: 1.35;
+}
+
+.o_slot_count {
+    white-space: nowrap;
+    color: #6d6172;
+    font-size: 14px;
+}
+
+.o_slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+    gap: 10px;
+    max-height: 188px;
+    overflow: auto;
+}
+
+.o_slot {
+    display: grid;
+    gap: 4px;
+    min-height: 72px;
+    border: 1px solid #d7cbdf;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #21182a;
+    padding: 10px 12px;
+    text-align: left;
+    cursor: pointer;
+    line-height: 1.2;
+}
+
+.o_slot small {
+    display: block;
+    color: #6d6172;
+}
+
+.o_slot:hover {
+    border-color: #6d35a8;
+}
+
+.o_slot.is-selected {
+    border-color: #4b1d73;
+    background: #4b1d73;
+    color: #ffffff;
+}
+
+.o_slot.is-selected small {
+    color: #e8dff0;
+}
+
+.o_slot:disabled {
+    background: #e5e2e6;
+    color: #8b8490;
+    cursor: not-allowed;
+}
+
+.o_people {
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+    align-items: center;
+    min-height: 62px;
+    border: 1.5px solid #1b1226;
+    border-radius: 18px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.o_people button {
+    height: 100%;
+    border: 0;
+    background: transparent;
+    color: #1b1226;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.o_people button:hover {
+    background: #f1e8f8;
+    color: #4b1d73;
+}
+
+.o_people strong {
+    text-align: center;
+    color: #151218;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.o_customer_grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 30px;
+}
+
+.o_customer_input::placeholder,
+.o_event_input::placeholder,
+.o_event_notes::placeholder {
+    color: #8f8795;
+}
+
+.o_addons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 30px;
+}
+
+.o_addon {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: center;
+    min-height: 60px;
+    border: 1px solid #e1d8e6;
+    border-radius: 18px;
+    background: #ffffff;
+    color: #2f2636;
+    padding: 14px 20px;
+    font-size: 20px;
+    overflow: hidden;
+}
+
+.o_addon input {
+    width: 22px;
+    height: 22px;
+    accent-color: #6d35a8;
+}
+
+.o_addon strong {
+    color: #7b7081;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.o_addon.is-disabled {
+    background: #e4e2dd;
+    color: #8a858d;
+}
+
+.o_coming_soon {
+    position: absolute;
+    right: 128px;
+    top: 15px;
+    z-index: 1;
+    background: #ffd600;
+    color: #2a1937;
+    padding: 5px 12px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: .04em;
+    transform: rotate(-13deg);
+}
+
+.o_cancellation_note {
+    margin-top: -12px;
+    color: #8a858d;
+    font-size: 18px;
+}
+
+.o_cricket_booking_summary {
+    display: grid;
+    gap: 16px;
+}
+
+.o_cricket_price_summary {
+    display: grid;
+    gap: 0;
+    border: 1px solid #e6dceb;
+    border-radius: 8px;
+    background: #fbf8fd;
+    padding: 8px 18px;
+}
+
+.o_price_row,
+.o_price_total {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid #ede5f1;
+    color: #3c3342;
+    font-size: 15px;
+}
+
+.o_price_total {
+    border-bottom: 0;
+    color: #20112f;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.o_checkout_button,
+.o_event_submit {
+    width: 100%;
+    min-height: 60px;
+    border: 0;
+    border-radius: 18px;
+    background: #2a0f3f;
+    color: #ffd600;
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: .01em;
+    cursor: pointer;
+    transition: background .18s ease, transform .18s ease;
+}
+
+.o_checkout_button:hover,
+.o_event_submit:hover {
+    background: #4b1d73;
+    transform: translateY(-1px);
+}
+
+.o_checkout_button:disabled {
+    background: #9c94a2;
+    color: #eee9f1;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.o_booking_error {
+    color: #ad2734;
+    font-size: 15px;
+}
+
+.o_event_notes {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.o_event_message {
+    border: 1px solid #cfc2dc;
+    border-radius: 8px;
+    background: #f1e8f8;
+    color: #30104c;
+    padding: 14px 16px;
+    font-size: 16px;
+}
+
+.o_cricket_loading {
+    min-height: 240px;
+    display: grid;
+    place-items: center;
+    color: #4b1d73;
+    font-size: 20px;
+}
+
+@media (max-width: 980px) {
+    .o_booking_hero,
+    .o_booking_columns,
+    .o_customer_grid,
+    .o_addons {
+        grid-template-columns: 1fr;
+    }
+
+    .o_hero_collage {
+        min-height: 320px;
+    }
+
+    .o_booking_type {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 640px) {
+    .o_cricket_booking_shell {
+        padding: 32px 12px 48px;
+    }
+
+    .o_booking_intro h1 {
+        font-size: 46px;
+    }
+
+    .o_booking_intro p,
+    .o_type_copy em,
+    .o_form_step,
+    .o_field_group,
+    .o_location_select,
+    .o_customer_input,
+    .o_event_input,
+    .o_event_notes {
+        font-size: 17px;
+    }
+
+    .o_type_copy strong {
+        font-size: 24px;
+    }
+
+    .o_booking_type {
+        padding: 22px 20px;
+    }
+
+    .o_cricket_booking_main {
+        gap: 28px;
+    }
+
+    .o_lane_map_panel {
+        padding: 18px 16px 0;
+    }
+
+    .o_cricket_lane_map {
+        gap: 18px;
+        min-width: 700px;
+    }
+
+    .o_lane_bundle_summary {
+        width: 100%;
+        grid-template-columns: auto 1fr;
+    }
+
+    .o_lane_bundle_summary span:last-child {
+        grid-column: 2;
+    }
+
+    .o_coming_soon {
+        right: 72px;
+        top: 16px;
+        font-size: 14px;
+    }
+}

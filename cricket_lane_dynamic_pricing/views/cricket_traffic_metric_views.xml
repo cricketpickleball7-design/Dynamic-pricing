@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cricket_location_form_dynamic_pricing" model="ir.ui.view">
+        <field name="name">cricket.location.form.dynamic.pricing</field>
+        <field name="model">cricket.location</field>
+        <field name="inherit_id" ref="cricket_lane_booking.view_cricket_location_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Dynamic Pricing">
+                    <group string="Traffic">
+                        <field name="traffic_window_minutes"/>
+                        <field name="high_traffic_count"/>
+                        <field name="very_high_traffic_count"/>
+                        <field name="high_traffic_multiplier"/>
+                        <field name="very_high_traffic_multiplier"/>
+                    </group>
+                    <group string="Competitor Adjustment">
+                        <field name="competitor_capture_percent"/>
+                        <field name="competitor_min_adjustment"/>
+                        <field name="competitor_max_adjustment"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_cricket_traffic_metric_list" model="ir.ui.view">
+        <field name="name">cricket.traffic.metric.list</field>
+        <field name="model">cricket.traffic.metric</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0">
+                <field name="created_at"/>
+                <field name="event_type"/>
+                <field name="location_id"/>
+                <field name="booking_type_id"/>
+                <field name="lane_id"/>
+                <field name="slot_start"/>
+                <field name="page_url"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cricket_traffic_metric_form" model="ir.ui.view">
+        <field name="name">cricket.traffic.metric.form</field>
+        <field name="model">cricket.traffic.metric</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="created_at"/>
+                            <field name="event_type"/>
+                            <field name="location_id"/>
+                            <field name="booking_type_id"/>
+                            <field name="lane_id"/>
+                            <field name="slot_start"/>
+                        </group>
+                        <group>
+                            <field name="website_session_id"/>
+                            <field name="session_token"/>
+                            <field name="page_url"/>
+                            <field name="ip_hash"/>
+                            <field name="user_agent_hash"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

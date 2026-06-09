@@ -1,0 +1,14 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cricket_price_rule_user,cricket.price.rule user,model_cricket_price_rule,cricket_lane_booking.group_cricket_booking_user,1,0,0,0
+access_cricket_price_rule_manager,cricket.price.rule manager,model_cricket_price_rule,cricket_lane_booking.group_cricket_pricing_manager,1,1,1,1
+access_cricket_competitor_rate_user,cricket.competitor.rate user,model_cricket_competitor_rate,cricket_lane_booking.group_cricket_booking_user,1,0,0,0
+access_cricket_competitor_rate_manager,cricket.competitor.rate manager,model_cricket_competitor_rate,cricket_lane_booking.group_cricket_pricing_manager,1,1,1,1
+access_cricket_traffic_metric_user,cricket.traffic.metric user,model_cricket_traffic_metric,cricket_lane_booking.group_cricket_booking_user,1,0,0,0
+access_cricket_traffic_metric_manager,cricket.traffic.metric manager,model_cricket_traffic_metric,cricket_lane_booking.group_cricket_pricing_manager,1,1,1,1
+access_cricket_price_rule_internal,cricket.price.rule internal,model_cricket_price_rule,base.group_user,1,0,0,0
+access_cricket_price_rule_admin,cricket.price.rule admin,model_cricket_price_rule,base.group_system,1,1,1,1
+access_cricket_competitor_rate_internal,cricket.competitor.rate internal,model_cricket_competitor_rate,base.group_user,1,0,0,0
+access_cricket_competitor_rate_admin,cricket.competitor.rate admin,model_cricket_competitor_rate,base.group_system,1,1,1,1
+access_cricket_traffic_metric_internal,cricket.traffic.metric internal,model_cricket_traffic_metric,base.group_user,1,0,0,0
+access_cricket_traffic_metric_admin,cricket.traffic.metric admin,model_cricket_traffic_metric,base.group_system,1,1,1,1
+access_cricket_traffic_metric_public,cricket.traffic.metric public,model_cricket_traffic_metric,base.group_public,0,0,1,0

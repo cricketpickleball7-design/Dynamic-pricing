@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="mail_template_cricket_booking_confirmation" model="mail.template">
+        <field name="name">Cricket Booking Confirmation</field>
+        <field name="model_id" ref="model_cricket_booking"/>
+        <field name="subject">Your cricket booking {{ object.name }} is confirmed</field>
+        <field name="email_to">{{ object.customer_email or object.partner_id.email }}</field>
+        <field name="body_html" type="html">
+            <div>
+                <p>Hello <t t-out="object.partner_id.name"/>,</p>
+                <p>Your cricket booking is confirmed.</p>
+                <ul>
+                    <li>Booking: <t t-out="object.name"/></li>
+                    <li>Type: <t t-out="object.booking_type_id.name"/></li>
+                    <li>Lanes: <t t-out="', '.join(object.lane_ids.mapped('name'))"/></li>
+                    <li>People: <t t-out="object.people_count"/></li>
+                    <li>Amount: <t t-out="object.price_total"/> <t t-out="object.currency_id.name"/></li>
+                </ul>
+                <p><t t-out="object.cancellation_policy_text"/></p>
+            </div>
+        </field>
+    </record>
+</odoo>

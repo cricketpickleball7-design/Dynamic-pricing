@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_cricket_booking_user" model="res.groups">
+        <field name="name">Cricket Booking User</field>
+    </record>
+
+    <record id="group_cricket_booking_manager" model="res.groups">
+        <field name="name">Cricket Booking Manager</field>
+        <field name="implied_ids" eval="[(4, ref('cricket_lane_booking.group_cricket_booking_user'))]"/>
+    </record>
+
+    <record id="group_cricket_pricing_manager" model="res.groups">
+        <field name="name">Cricket Pricing Manager</field>
+        <field name="implied_ids" eval="[(4, ref('cricket_lane_booking.group_cricket_booking_manager'))]"/>
+    </record>
+</odoo>

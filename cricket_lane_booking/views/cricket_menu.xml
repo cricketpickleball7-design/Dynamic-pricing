@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_cricket_booking_root" name="Cricket Booking" sequence="40"/>
+
+    <record id="action_cricket_resource_dashboard" model="ir.actions.act_window">
+        <field name="name">Resource Dashboard</field>
+        <field name="res_model">cricket.lane</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[('active', '=', True)]</field>
+    </record>
+    <menuitem id="menu_cricket_resource_dashboard" name="Resource Dashboard" parent="menu_cricket_booking_root" action="action_cricket_resource_dashboard" sequence="5"/>
+
+    <record id="action_cricket_booking" model="ir.actions.act_window">
+        <field name="name">Bookings</field>
+        <field name="res_model">cricket.booking</field>
+        <field name="view_mode">list,form,calendar</field>
+    </record>
+    <menuitem id="menu_cricket_bookings" name="Bookings" parent="menu_cricket_booking_root" action="action_cricket_booking" sequence="10"/>
+
+    <record id="action_cricket_booking_calendar" model="ir.actions.act_window">
+        <field name="name">Booking Calendar</field>
+        <field name="res_model">cricket.booking</field>
+        <field name="view_mode">calendar,list,form</field>
+    </record>
+    <menuitem id="menu_cricket_booking_calendar" name="Booking Calendar" parent="menu_cricket_booking_root" action="action_cricket_booking_calendar" sequence="12"/>
+
+    <record id="action_cricket_booking_hold" model="ir.actions.act_window">
+        <field name="name">Booking Holds</field>
+        <field name="res_model">cricket.booking.hold</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_cricket_booking_holds" name="Booking Holds" parent="menu_cricket_booking_root" action="action_cricket_booking_hold" sequence="20"/>
+
+    <record id="action_cricket_slot_block" model="ir.actions.act_window">
+        <field name="name">Slot Blocks</field>
+        <field name="res_model">cricket.slot.block</field>
+        <field name="view_mode">calendar,list,form</field>
+    </record>
+    <menuitem id="menu_cricket_slot_blocks" name="Slot Blocks" parent="menu_cricket_booking_root" action="action_cricket_slot_block" sequence="25"/>
+
+    <menuitem id="menu_cricket_configuration" name="Configuration" parent="menu_cricket_booking_root" sequence="80"/>
+
+    <record id="action_cricket_location" model="ir.actions.act_window">
+        <field name="name">Locations</field>
+        <field name="res_model">cricket.location</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_cricket_locations" name="Locations" parent="menu_cricket_configuration" action="action_cricket_location" sequence="10"/>
+
+    <record id="action_cricket_lane" model="ir.actions.act_window">
+        <field name="name">Lanes</field>
+        <field name="res_model">cricket.lane</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_cricket_lanes" name="Lanes" parent="menu_cricket_configuration" action="action_cricket_lane" sequence="20"/>
+
+    <record id="action_cricket_booking_type" model="ir.actions.act_window">
+        <field name="name">Booking Types</field>
+        <field name="res_model">cricket.booking.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_cricket_booking_types" name="Booking Types" parent="menu_cricket_configuration" action="action_cricket_booking_type" sequence="30"/>
+
+    <record id="action_cricket_slot_rule" model="ir.actions.act_window">
+        <field name="name">Slot Rules</field>
+        <field name="res_model">cricket.slot.rule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_cricket_slot_rules" name="Slot Rules" parent="menu_cricket_configuration" action="action_cricket_slot_rule" sequence="40"/>
+
+    <record id="action_cricket_addon" model="ir.actions.act_window">
+        <field name="name">Add-ons</field>
+        <field name="res_model">cricket.addon</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem id="menu_cricket_addons" name="Add-ons" parent="menu_cricket_configuration" action="action_cricket_addon" sequence="50"/>
+
+    <menuitem id="menu_cricket_reports" name="Reports" parent="menu_cricket_booking_root" sequence="90"/>
+</odoo>
