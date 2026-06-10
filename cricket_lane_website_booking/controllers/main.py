@@ -162,10 +162,16 @@ class CricketLaneWebsiteBookingController(http.Controller):
                 "session_token": self._session_token(),
             }, request=request)
             order = hold.action_create_sale_order()
+            order.sudo().write({
+                "website_id": request.website.id,
+                "team_id": request.website.salesteam_id.id,
+            })
             request.session["sale_order_id"] = order.id
+            request.session["website_sale_cart_quantity"] = order.cart_quantity
+            request.cart = order
             return self._json({
                 "sale_order_id": order.id,
-                "redirect_url": "/shop/payment",
+                "redirect_url": "/shop/cart",
             })
         except (UserError, ValidationError) as error:
             return self._json({"error": str(error)}, status=400)

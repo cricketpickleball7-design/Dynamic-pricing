@@ -83,10 +83,11 @@ When the customer clicks `BOOK A LANE`:
    - Add-ons use their own service products.
    - The calculated price is locked onto the sale order line.
    - The sale order is stored in the website session.
-5. The website redirects the customer to `/shop/payment`.
-6. The customer pays using Odoo Website Sale payment checkout.
-7. After payment confirms the sale order, `sale.order.action_confirm()` converts the hold into a real `cricket.booking`.
-8. The confirmed booking creates a calendar event, links back to the sale order, and sends the confirmation email.
+5. The website redirects the customer to `/shop/cart`.
+6. The customer reviews the service booking and add-on service products in the cart, then continues through Odoo Website Sale checkout to `/shop/payment`.
+7. The customer pays using Odoo Website Sale payment checkout.
+8. After payment confirms the sale order, `sale.order.action_confirm()` converts the hold into a real `cricket.booking`.
+9. The confirmed booking creates a calendar event, links back to the sale order, and sends the confirmation email.
 
 If the customer does not pay before the hold expires, the slot is released and no confirmed booking is created.
 

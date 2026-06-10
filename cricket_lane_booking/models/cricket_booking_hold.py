@@ -10,6 +10,9 @@ from odoo.exceptions import UserError, ValidationError
 from odoo.tools import float_round
 
 
+MAX_PEOPLE_PER_BOOKING = 8
+
+
 class CricketBookingHold(models.Model):
     _name = "cricket.booking.hold"
     _description = "Cricket Booking Hold"
@@ -397,7 +400,7 @@ class CricketBookingHold(models.Model):
     def _validate_people_and_addons(self, booking_type, lanes, people_count, addons):
         if people_count < 1:
             raise UserError(_("People count must be at least 1."))
-        max_people = min(lanes.mapped("max_people") or [1])
+        max_people = min(min(lanes.mapped("max_people") or [1]), MAX_PEOPLE_PER_BOOKING)
         if people_count > max_people:
             raise UserError(_("This selection allows a maximum of %s people.") % max_people)
         for addon in addons:

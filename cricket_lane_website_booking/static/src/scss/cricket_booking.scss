@@ -642,7 +642,7 @@ button.o_lane_bundle_summary {
 
 .o_slots {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 10px;
     max-height: 188px;
     overflow: auto;
@@ -710,6 +710,12 @@ button.o_lane_bundle_summary {
 .o_people button:hover {
     background: #f1e8f8;
     color: #4b1d73;
+}
+
+.o_people button:disabled {
+    background: #f4f1f5;
+    color: #b4acba;
+    cursor: not-allowed;
 }
 
 .o_people strong {

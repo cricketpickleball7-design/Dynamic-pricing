@@ -1,6 +1,7 @@
 from datetime import timedelta
 
 from odoo import fields
+from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
 
 
@@ -49,10 +50,7 @@ class TestCricketHolds(TransactionCase):
 
     def test_multi_slot_hold_blocks_continuous_range(self):
         payload = self._payload()
-        start = self.hold_model._parse_datetime_in_location_tz(
-            payload["slot_start"],
-            self.location,
-        )
+        start = fields.Datetime.to_datetime(payload["slot_start"])
         payload["slot_starts"] = [
             fields.Datetime.to_string(start),
             fields.Datetime.to_string(start + timedelta(hours=1)),
@@ -60,3 +58,9 @@ class TestCricketHolds(TransactionCase):
         hold = self.hold_model.create_hold_from_payload(payload)
         self.assertEqual(hold.slot_count, 2)
         self.assertEqual((hold.slot_end - hold.slot_start).total_seconds(), 120 * 60)
+
+    def test_people_count_is_limited_to_eight(self):
+        payload = self._payload()
+        payload["people_count"] = 9
+        with self.assertRaises(UserError):
+            self.hold_model.create_hold_from_payload(payload)

@@ -5,6 +5,8 @@ import { laneMapHtml } from "./cricket_lane_map";
 import { datePickerHtml } from "./cricket_date_picker";
 import { pricingSummaryHtml } from "./cricket_pricing_summary";
 
+const MAX_PEOPLE = 8;
+
 function localDateValue(date = new Date()) {
     const month = String(date.getMonth() + 1).padStart(2, "0");
     const day = String(date.getDate()).padStart(2, "0");
@@ -106,7 +108,7 @@ publicWidget.registry.CricketBookingWidget = publicWidget.Widget.extend({
             return;
         }
         const laneId = this.state.laneIds[0];
-        const data = await this._api(`/cricket/api/slots?location_id=${this.state.locationId}&booking_type=${this.state.bookingType}&lane_id=${laneId}&date=${this.state.date}&people_count=${this.state.peopleCount}`);
+        const data = await this._api(`/cricket/api/slots?location_id=${this.state.locationId}&booking_type=${this.state.bookingType}&lane_id=${laneId}&date=${this.state.date}&people_count=${this._clampedPeopleCount()}`);
         this.slots = data.slots || [];
         const availableValues = new Set(this.slots.filter((slot) => slot.available).map((slot) => slot.slot_start));
         this.state.slotStarts = (this.state.slotStarts || []).filter((value) => availableValues.has(value));
@@ -137,7 +139,7 @@ publicWidget.registry.CricketBookingWidget = publicWidget.Widget.extend({
             lane_ids: this.state.laneIds,
             slot_start: this.state.slotStart,
             slot_starts: this.state.slotStarts,
-            people_count: this.state.peopleCount,
+            people_count: this._clampedPeopleCount(),
             addon_ids: this.state.addonIds,
             customer: this.state.customer,
         };
@@ -177,6 +179,9 @@ publicWidget.registry.CricketBookingWidget = publicWidget.Widget.extend({
         }).join("");
         const total = Number(this.state.quote?.price_total || 0).toFixed(2);
         const hero = this._heroHtml(typeCards);
+        const peopleCount = this._clampedPeopleCount();
+        this.state.peopleCount = peopleCount;
+        const maxPeople = this._maxPeople();
         const bookingBody = eventMode ? this._eventHtml(hero, locations, addons) : `
             <div class="o_cricket_booking_experience">
                 ${hero}
@@ -207,9 +212,9 @@ publicWidget.registry.CricketBookingWidget = publicWidget.Widget.extend({
                             <label>5. NUMBER OF PEOPLE</label>
                             <span class="o_lane_context">${this._selectedLaneLabel()}</span>
                             <div class="o_people">
-                                <button type="button" class="o_people_minus">-</button>
-                                <strong>${this.state.peopleCount}</strong>
-                                <button type="button" class="o_people_plus">+</button>
+                                <button type="button" class="o_people_minus" ${peopleCount <= 1 ? "disabled" : ""}>-</button>
+                                <strong>${peopleCount}</strong>
+                                <button type="button" class="o_people_plus" ${peopleCount >= maxPeople ? "disabled" : ""}>+</button>
                             </div>
                         </div>
                     </div>
@@ -308,7 +313,7 @@ publicWidget.registry.CricketBookingWidget = publicWidget.Widget.extend({
                         <label class="o_field_group">6. EVENT TYPE<input class="o_event_input" data-field="event_type" placeholder="Birthday, corporate, team party" value="${this.state.event?.event_type || ""}"/></label>
                         <label class="o_field_group">7. PREFERRED DATE<input class="o_event_input" data-field="preferred_date" type="date" value="${this.state.event?.preferred_date || this.state.date}"/></label>
                         <label class="o_field_group">8. PREFERRED TIME<input class="o_event_input" data-field="preferred_time" type="time" value="${this.state.event?.preferred_time || "18:00"}"/></label>
-                        <label class="o_field_group">9. NUMBER OF PEOPLE<input class="o_event_input" data-field="people_count" type="number" min="1" placeholder="People" value="${this.state.event?.people_count || this.state.peopleCount}"/></label>
+                        <label class="o_field_group">9. NUMBER OF PEOPLE<input class="o_event_input" data-field="people_count" type="number" min="1" max="${MAX_PEOPLE}" placeholder="People" value="${this.state.event?.people_count || this._clampedPeopleCount()}"/></label>
                     </div>
                     <div class="o_form_step o_form_step_full">
                         <label>10. ADDITIONAL SERVICES</label>
@@ -408,13 +413,17 @@ publicWidget.registry.CricketBookingWidget = publicWidget.Widget.extend({
     },
 
     async _onPeopleMinus() {
-        this.state.peopleCount = Math.max(1, this.state.peopleCount - 1);
+        this.state.peopleCount = Math.max(1, this._clampedPeopleCount() - 1);
         await this._loadSlots();
         this._render();
     },
 
     async _onPeoplePlus() {
-        this.state.peopleCount += 1;
+        const nextCount = Math.min(this._maxPeople(), this._clampedPeopleCount() + 1);
+        if (nextCount === this.state.peopleCount) {
+            return;
+        }
+        this.state.peopleCount = nextCount;
         await this._loadSlots();
         this._render();
     },
@@ -434,8 +443,24 @@ publicWidget.registry.CricketBookingWidget = publicWidget.Widget.extend({
         this.state.customer[ev.currentTarget.dataset.field] = ev.currentTarget.value;
     },
 
+    _maxPeople() {
+        const selectedLanes = (this.lanes || []).filter((lane) => this.state.laneIds.includes(lane.id));
+        const laneLimit = Math.min(...selectedLanes.map((lane) => lane.max_people).filter(Boolean));
+        return Math.min(Number.isFinite(laneLimit) ? laneLimit : MAX_PEOPLE, MAX_PEOPLE);
+    },
+
+    _clampedPeopleCount() {
+        const count = Number(this.state.peopleCount) || 1;
+        return Math.min(Math.max(count, 1), this._maxPeople());
+    },
+
     _onEventInput(ev) {
         this.state.event = this.state.event || {};
+        if (ev.currentTarget.dataset.field === "people_count") {
+            const count = Number(ev.currentTarget.value) || 1;
+            this.state.event.people_count = Math.min(Math.max(count, 1), MAX_PEOPLE);
+            return;
+        }
         this.state.event[ev.currentTarget.dataset.field] = ev.currentTarget.value;
     },
 
@@ -463,7 +488,7 @@ publicWidget.registry.CricketBookingWidget = publicWidget.Widget.extend({
                 event_type: event.event_type,
                 preferred_date: event.preferred_date || this.state.date,
                 preferred_time: event.preferred_time || "18:00",
-                people_count: event.people_count || this.state.peopleCount,
+                people_count: Math.min(Math.max(Number(event.people_count || this.state.peopleCount) || 1, 1), MAX_PEOPLE),
                 addon_ids: this.state.addonIds,
                 notes: event.notes,
             });
